@@ -1,6 +1,6 @@
 <?php
 
-$sequence = $jars->config($jars->token())->sequence;
+$sequence = $jars->config()->sequence;
 
 if (!$sequence) {
     error_response('Sequence not set up');
