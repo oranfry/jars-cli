@@ -1,3 +1,2 @@
-<?php
+<?= $version ?>
 
-echo $version;

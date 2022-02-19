@@ -10,7 +10,7 @@ class CliRouter extends \subsimple\Router
         'CLI h2n \S+' =>                [null, 'PAGE' => 'h2n',             'H',    'AUTHSCHEME' => 'none'],
         'CLI import' =>                 [null, 'PAGE' => 'import',                  'AUTHSCHEME' => 'onetime'],
         'CLI n2h \S+' =>                [null, 'PAGE' => 'n2h',             'N',    'AUTHSCHEME' => 'none'],
-        'CLI reset-schema' =>           [null, 'PAGE' => 'reset-schema',            'AUTHSCHEME' => 'onetime'],
+        'CLI refresh' =>                [null, 'PAGE' => 'refresh',                 'AUTHSCHEME' => 'onetime'],
         'CLI save' =>                   [null, 'PAGE' => 'save',                    'AUTHSCHEME' => 'onetime'],
    ];
 }
