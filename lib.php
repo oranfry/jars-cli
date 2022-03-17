@@ -61,3 +61,13 @@ function usage($command, $parameters)
 
     echo "\n";
 }
+
+function import_presave($data, $jars, $timestamp)
+{
+    global $linetype;
+
+    foreach ($data as $line) {
+        $line->type = $linetype;
+    }
+}
+
