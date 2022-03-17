@@ -1,11 +1,21 @@
 <?php
 
+global $linetype;
+
 $jars->masterlog_check();
 
 echo "Importing\n\n";
 
 while ($f = fgets(STDIN)) {
-    list($hash, $date, $time, $json) = explode(' ', $f, 4);
+    // list($hash, $date, $time, $json) = explode(' ', $f, 4);
+    list($date, $time, $linetype, $json) = explode(' ', $f, 4);
+
+    // dd(
+    //     'date', $date,
+    //     'time', $time,
+    //     'linetype', $linetype,
+    //     'json', $json,
+    // );
 
     $timestamp = "{$date} {$time}";
     $data = json_decode($json);
