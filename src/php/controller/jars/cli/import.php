@@ -11,7 +11,7 @@ while ($f = fgets(STDIN)) {
     $data = json_decode($json);
 
     if (function_exists('import_presave')) {
-        $result = import_presave($data, $token, $timestamp);
+        $result = import_presave($data, $jars, $timestamp);
 
         if (is_array($result)) {
             extract($result);
@@ -29,7 +29,7 @@ while ($f = fgets(STDIN)) {
     }
 
     if (function_exists('import_postsave')) {
-        $result = import_postsave($data, $token, $timestamp);
+        $result = import_postsave($data, $jars, $timestamp);
 
         if (is_array($result)) {
             extract($result);
