@@ -1,4 +1,6 @@
 <?php
 
-return ['found' => $jars->h2n(H);
+return [
+    'found' => $jars->h2n(H),
+];
 
