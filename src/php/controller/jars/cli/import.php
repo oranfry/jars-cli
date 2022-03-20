@@ -1,6 +1,9 @@
 <?php
 
-global $linetype;
+global $linetype, $id_map, $new_subs;
+
+$id_map = [];
+$new_subs = [];
 
 $jars->masterlog_check();
 
@@ -46,5 +49,13 @@ while ($f = fgets(STDIN)) {
         }
     }
 }
+
+echo "            'subs' => [\n";
+
+foreach ($new_subs as $pointer => $id) {
+    echo "                $pointer => '$id',\n";
+}
+
+echo "            ]\n";
 
 return [];
