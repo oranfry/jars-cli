@@ -1,4 +1,4 @@
-Collisions up to n=<?= MAX ?>:
-
-<?php print_r_wide($collisions, 10) ?>
-
+'sequence' => (object) [
+    'max' => <?= MAX ?>,
+    'collisions' => <?php print_r_wide($collisions, 10) ?>,
+];
