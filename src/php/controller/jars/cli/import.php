@@ -1,11 +1,21 @@
 <?php
 
+use jars\cli\ImportListener;
+
 $jars->masterlog_check();
+
+if (FEEDBACK_FIFO) {
+    echo "Opening feedback fifo for WRITE...\n";
+
+    $jars->listen(new ImportListener(fopen(FEEDBACK_FIFO, 'w')));
+
+    echo "Successfully opened feedback fifo for WRITE.\n";
+}
 
 echo "Importing\n\n";
 
 while ($f = fgets(STDIN)) {
-    list($hash, $date, $time, $json) = explode(' ', $f, 4);
+    [$hash, $date, $time, $json] = explode(' ', $f, 4);
 
     $timestamp = "{$date} {$time}";
     $data = json_decode($json);

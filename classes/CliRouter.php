@@ -25,7 +25,16 @@ class CliRouter extends \subsimple\Router
             'AUTHSCHEME' => 'onetime',
             'LAYOUT' => 'jars/cli/main',
             'PAGE' => 'jars/cli/import',
+            'FEEDBACK_FIFO' => null,
             0 => null,
+        ],
+
+        'CLI import \S+' => [
+            'AUTHSCHEME' => 'onetime',
+            'LAYOUT' => 'jars/cli/main',
+            'PAGE' => 'jars/cli/import',
+            0 => null,
+            1 => 'FEEDBACK_FIFO',
         ],
 
         'CLI n2h \S+' => [
