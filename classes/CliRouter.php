@@ -96,5 +96,14 @@ class CliRouter extends \subsimple\Router
             2 => 'GROUP_NAME',
             3 => 'MIN_VERSION',
         ],
+
+        'CLI get \S+ \S+' => [
+            'AUTHSCHEME' => 'onetime',
+            'LAYOUT' => 'jars/cli/main',
+            'PAGE' => 'jars/cli/get',
+            0 => null,
+            1 => 'LINETYPE_NAME',
+            2 => 'ID',
+        ],
    ];
 }
