@@ -1,14 +1,12 @@
 {
-    "name": "oranfry\/jars-cli",
-    "version": "1.0.0",
-    "minimum-stability": "dev",
-    "require": {
-        "oranfry\/jars-core": "*",
-        "oranfry\/subsimple": "*"
-    },
     "autoload": {
         "psr-4": {
             "jars\\cli\\": "classes"
         }
+    },
+    "name": "oranfry\/jars-cli",
+    "require": {
+        "oranfry\/jars-core": "*",
+        "oranfry\/subsimple": "*"
     }
 }
