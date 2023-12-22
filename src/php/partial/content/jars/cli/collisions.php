@@ -1,4 +1,2 @@
-'sequence' => (object) [
-    'max' => <?= MAX ?>,
-    'collisions' => <?php print_r_wide($collisions, 10) ?>,
-];
+$this->sequence = (new Sequence('...', <?= MAX ?>))
+    ->collisions(<?php print_r_wide($collisions, 10) ?>);
