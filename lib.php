@@ -45,19 +45,50 @@ function print_r_wide(array $arr, int $width = 1)
 
 function usage($command, $parameters)
 {
-    echo 'Usage: ' . basename($command);
+    $width = 75;
+    $left_width = 25;
+
+    echo "\n" . 'Usage: ' . basename($command) . ' [OPTIONS] COMMAND [...ARGS]' . "\n\n";
+
+    echo "OPTIONS:\n\n";
 
     foreach ($parameters as $name => $details) {
-        echo ' ';
+        $left = ['    --' . str_replace('_', '-', $name)];
 
-        if ($short = @$details->short) {
-            echo '-' . $short . '|';
+        if ($details->short ?? null) {
+            $left[] = '     -' . $details->short;
         }
 
-        echo '--' . str_replace('_', '-', $name) . '=' . strtoupper($name);
+        $right = explode("\n", wordwrap($details->description, $width - $left_width));
+
+        for ($i = 0; $i < max(count($left), count($right)); $i++) {
+            echo str_pad($left[$i] ?? '', $left_width - 1) . ' ' . ($right[$i] ?? '') . "\n";
+        }
+
+        echo "\n";
     }
 
-    echo ' COMMAND [...ARGS]';
+    echo "COMMANDS:\n\n";
 
-    echo "\n";
+    $commands = [
+        'collisions MAX' => 'Compute id collisions up to the given MAX number in the sequence. Outputs the collisions in a format suitible for saving against the sequence',
+        'get LINETYPE_NAME ID' => 'Reconstruct and return (as JSON object) the given line. Does not rely on reports.',
+        'group REPORT_NAME [GROUP_NAME] [MIN_VERSION]' => 'Get report data for the given report and group',
+        'groups REPORT_NAME [PREFIX] [MIN_VERSION]' => 'List groups in the given report that have the given prefix.',
+        'h2n HASH' => 'Hash to Number - output the numerical ID that corresponds to the given hash ID for the portal, if found. Found through a sequential scan from 0 to the sequence max.',
+        'import [FEEDBACK_FIFO]' => 'Read lines in master log format from STDIN and to the database. Useful for replaying a master log. If FEEDBACK_FIFO is specified, jars reports progress to a FIFO residing at the path specified therein.',
+        'n2h NUMBER' => 'Number to Hash - compute the hash ID for the given numerical ID in the sequence.',
+        'refresh' => 'Trigger report refresh.',
+        'save' => 'Read lines from STDIN as JSON (must be an array) and save to the database.',
+    ];
+
+    foreach ($commands as $command => $description) {
+        echo '    ' . $command . "\n";
+
+        foreach (explode("\n", wordwrap($description, $width - 8)) as $line) {
+            echo '        ' . $line . "\n";
+        }
+
+        echo "\n";
+    }
 }
