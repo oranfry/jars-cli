@@ -89,7 +89,7 @@ class CliRouter extends \subsimple\Router
             3 => 'MIN_VERSION',
         ],
 
-        'CLI group \S+ -' => [
+        'CLI group \S+ ^-$' => [
             'AUTHSCHEME' => 'onetime',
             'LAYOUT' => 'jars/cli/main',
             'PAGE' => 'jars/cli/group',
@@ -114,7 +114,7 @@ class CliRouter extends \subsimple\Router
             'AUTHSCHEME' => 'onetime',
             'LAYOUT' => 'jars/cli/main',
             'PAGE' => 'jars/cli/group',
-            'GROUP_NAME' => null,
+            'GROUP_NAME' => '',
             0 => null,
             1 => 'REPORT_NAME',
             2 => null,
