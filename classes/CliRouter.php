@@ -56,7 +56,16 @@ class CliRouter extends \subsimple\Router
             'AUTHSCHEME' => 'onetime',
             'LAYOUT' => 'jars/cli/main',
             'PAGE' => 'jars/cli/save',
+            'BASE_VERSION' => null,
             0 => null,
+        ],
+
+        'CLI save \S+' => [
+            'AUTHSCHEME' => 'onetime',
+            'LAYOUT' => 'jars/cli/main',
+            'PAGE' => 'jars/cli/save',
+            0 => null,
+            1 => 'BASE_VERSION',
         ],
 
         'CLI groups \S+' => [
