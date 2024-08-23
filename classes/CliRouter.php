@@ -5,14 +5,6 @@ namespace jars\cli;
 class CliRouter extends \subsimple\Router
 {
     protected static $routes = [
-        'CLI collisions \S+' => [
-            'AUTHSCHEME' => 'none',
-            'LAYOUT' => 'jars/cli/main',
-            'PAGE' => 'jars/cli/collisions',
-            0 => null,
-            1 => 'MAX',
-        ],
-
         'CLI h2n \S+' => [
             'AUTHSCHEME' => 'none',
             'LAYOUT' => 'jars/cli/main',

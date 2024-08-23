@@ -6,6 +6,7 @@
     },
     "name": "oranfry\/jars-cli",
     "require": {
+        "oranfry\/jars-contracts": "*",
         "oranfry\/jars-core": "*",
         "oranfry\/subsimple": "*"
     }
