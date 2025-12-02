@@ -29,6 +29,44 @@ class CliRouter extends \subsimple\Router
             1 => 'FEEDBACK_FIFO',
         ],
 
+        'CLI info -e [_A-Za-z]+' => [
+            'AUTHSCHEME' => 'onetime',
+            'LAYOUT' => 'jars/cli/main',
+            'PAGE' => 'jars/cli/info',
+            'MODE' => 'env',
+            0 => null,
+            1 => null,
+            2 => 'PROPERTY',
+        ],
+
+        'CLI info [_A-Za-z]+' => [
+            'AUTHSCHEME' => 'onetime',
+            'LAYOUT' => 'jars/cli/main',
+            'PAGE' => 'jars/cli/info',
+            'MODE' => 'json',
+            0 => null,
+            1 => 'PROPERTY',
+        ],
+
+        'CLI info -e' => [
+            'AUTHSCHEME' => 'onetime',
+            'LAYOUT' => 'jars/cli/main',
+            'PAGE' => 'jars/cli/info',
+            'MODE' => 'env',
+            'PROPERTY' => null,
+            0 => null,
+            1 => null,
+        ],
+
+        'CLI info' => [
+            'AUTHSCHEME' => 'onetime',
+            'LAYOUT' => 'jars/cli/main',
+            'PAGE' => 'jars/cli/info',
+            'MODE' => 'json',
+            'PROPERTY' => null,
+            0 => null,
+        ],
+
         'CLI n2h \S+' => [
             'AUTHSCHEME' => 'onetime',
             'LAYOUT' => 'jars/cli/main',
