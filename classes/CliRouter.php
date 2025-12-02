@@ -6,7 +6,7 @@ class CliRouter extends \subsimple\Router
 {
     protected static $routes = [
         'CLI h2n \S+' => [
-            'AUTHSCHEME' => 'none',
+            'AUTHSCHEME' => 'onetime',
             'LAYOUT' => 'jars/cli/main',
             'PAGE' => 'jars/cli/h2n',
             0 => null,
@@ -30,7 +30,7 @@ class CliRouter extends \subsimple\Router
         ],
 
         'CLI n2h \S+' => [
-            'AUTHSCHEME' => 'none',
+            'AUTHSCHEME' => 'onetime',
             'LAYOUT' => 'jars/cli/main',
             'PAGE' => 'jars/cli/n2h',
             0 => null,
