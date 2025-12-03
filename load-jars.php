@@ -115,9 +115,12 @@ function jars_cli_load()
 
     // option fetching function
 
-    $jars_get_option = function(string $name, $default = null) use ($parameters, &$arguments): string|bool|null {
-        $upper = 'JARS_' . str_replace('-', '_', strtoupper($name));
-        $lower = str_replace('_', '-', strtolower($name));
+    $toupper = fn ($name) => 'JARS_' . preg_replace('/^(JARS_)*/', '', str_replace('-', '_', strtoupper($name)));
+    $tolower = fn ($name) => str_replace('_', '-', strtolower($name));
+
+    $jars_get_option = function(string $name, $default = null) use (&$arguments, $parameters, $tolower, $toupper): string|bool|null {
+        $upper = $toupper($name);
+        $lower = $tolower($name);
 
         $value = match (true) {
             defined($upper) => constant($upper),
@@ -146,7 +149,12 @@ function jars_cli_load()
         $etc_dir = (strpos($etc_dir, '/') !== 0 ? APP_HOME . '/' : null) . $etc_dir;
 
         if (is_file($portal_file = $etc_dir . '/' . $portal_name . '.json')) {
-            $portal_data = json_decode(file_get_contents($portal_file));
+            $portal_data = [];
+
+            foreach ((array) json_decode(file_get_contents($portal_file)) as $key => $value) {
+                $portal_data[$tolower($key)] = $value;
+            }
+
             break;
         }
     }
@@ -160,21 +168,21 @@ function jars_cli_load()
     // supplement options from portal config data
 
     if (isset($portal_data)) {
-        if (isset($portal_data->environment)) {
-            foreach ($portal_data->environment as $name => $value) {
+        if (isset($portal_data['environment'])) {
+            foreach ($portal_data['environment'] as $name => $value) {
                 putenv("$name=$value");
             }
         }
 
-        if (!isset($arguments['username']) && ($username = $portal_data->username ?? null)) {
+        if (!isset($arguments['username']) && ($username = $portal_data['username'] ?? null)) {
             $arguments['username'] = $username;
         }
 
-        if (!isset($arguments['connection-string']) && ($connection_string = $portal_data->connection_string ?? null)) {
+        if (!isset($arguments['connection-string']) && ($connection_string = $portal_data['connection-string'] ?? null)) {
             $arguments['connection-string'] = $connection_string;
         }
 
-        if (!isset($arguments['autoload']) && ($autoload = $portal_data->autoload ?? null)) {
+        if (!isset($arguments['autoload']) && ($autoload = $portal_data['autoload'] ?? null)) {
             $arguments['autoload'] = $autoload;
         }
     }
