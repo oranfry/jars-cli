@@ -115,7 +115,7 @@ function jars_cli_load()
 
     // option fetching function
 
-    $jars_get_option = function(string $name, $default = null) use ($parameters, $arguments): string|bool|null {
+    $jars_get_option = function(string $name, $default = null) use ($parameters, &$arguments): string|bool|null {
         $upper = 'JARS_' . str_replace('-', '_', strtoupper($name));
         $lower = str_replace('_', '-', strtolower($name));
 
