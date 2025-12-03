@@ -126,7 +126,7 @@ function jars_cli_load()
             default => $default,
         };
 
-        if ('boolean' === $parameters[$lower]->type ?? null) {
+        if (($parameters[$lower]->type ?? null) === 'boolean') {
             return (bool) $value;
         }
 
@@ -140,7 +140,7 @@ function jars_cli_load()
     // get portal config from portal config file if present
 
     $portal_name = $jars_get_option('portal', 'portal');
-    $etc_dirs = (array) $jars_get_option('etc-dir', ['/etc/jars', APP_HOME . '/etc']);
+    $etc_dirs = (array) ($jars_get_option('etc-dir') ?? ['/etc/jars', APP_HOME . '/etc']);
 
     foreach ($etc_dirs as $etc_dir) {
         $etc_dir = (strpos($etc_dir, '/') !== 0 ? APP_HOME . '/' : null) . $etc_dir;
@@ -151,7 +151,7 @@ function jars_cli_load()
         }
     }
 
-    if (null !== $portal_name && !isset($portal_data)) {
+    if (null !== $jars_get_option('portal') && !isset($portal_data)) {
         error_log('Could not portal file for ' . $portal_name, 4);
         jars_usage($command, $parameters);
         exit(1);
