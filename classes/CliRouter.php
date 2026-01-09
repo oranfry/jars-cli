@@ -178,5 +178,14 @@ class CliRouter extends \subsimple\Router
             1 => 'LINETYPE_NAME',
             2 => 'ID',
         ],
+
+        'CLI record \S+ \S+' => [
+            'AUTHSCHEME' => 'onetime',
+            'LAYOUT' => 'jars/cli/main',
+            'PAGE' => 'jars/cli/record',
+            0 => null,
+            1 => 'TABLE_NAME',
+            2 => 'ID',
+        ],
    ];
 }
