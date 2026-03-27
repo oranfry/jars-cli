@@ -1,6 +1,6 @@
 <?php
 
-namespace jars\cli;
+namespace OranFry\Jars\CLI;
 
 class CliRouter extends \subsimple\Router
 {
@@ -79,6 +79,20 @@ class CliRouter extends \subsimple\Router
             'AUTHSCHEME' => 'onetime',
             'LAYOUT' => 'jars/cli/main',
             'PAGE' => 'jars/cli/refresh',
+            0 => null,
+        ],
+
+        'CLI head' => [
+            'AUTHSCHEME' => 'onetime',
+            'LAYOUT' => 'jars/cli/main',
+            'PAGE' => 'jars/cli/head',
+            0 => null,
+        ],
+
+        'CLI rebuild-index' => [
+            'AUTHSCHEME' => 'onetime',
+            'LAYOUT' => 'jars/cli/main',
+            'PAGE' => 'jars/cli/rebuild-index',
             0 => null,
         ],
 

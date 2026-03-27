@@ -1,6 +1,6 @@
 <?php
 
-namespace jars\cli;
+namespace OranFry\Jars\CLI;
 
 class ToolsConfig extends \Tools\Config
 {

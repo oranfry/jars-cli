@@ -1,6 +1,6 @@
 <?php
 
-use jars\cli\ImportListener;
+use OranFry\Jars\CLI\ImportListener;
 
 $jars->masterlog_check();
 
