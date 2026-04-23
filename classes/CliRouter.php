@@ -18,6 +18,7 @@ class CliRouter extends \subsimple\Router
             'LAYOUT' => 'jars/cli/main',
             'PAGE' => 'jars/cli/import',
             'FEEDBACK_FIFO' => null,
+            'BASE_VERSION' => null,
             0 => null,
         ],
 
@@ -25,8 +26,39 @@ class CliRouter extends \subsimple\Router
             'AUTHSCHEME' => 'onetime',
             'LAYOUT' => 'jars/cli/main',
             'PAGE' => 'jars/cli/import',
+            'FEEDBACK_FIFO' => null,
             0 => null,
-            1 => 'FEEDBACK_FIFO',
+            1 => 'BASE_VERSION',
+        ],
+
+        'CLI import -f \S+' => [
+            'AUTHSCHEME' => 'onetime',
+            'LAYOUT' => 'jars/cli/main',
+            'PAGE' => 'jars/cli/import',
+            'BASE_VERSION' => null,
+            0 => null,
+            1 => null,
+            2 => 'FEEDBACK_FIFO',
+        ],
+
+        'CLI import -f \S+ \S+' => [
+            'AUTHSCHEME' => 'onetime',
+            'LAYOUT' => 'jars/cli/main',
+            'PAGE' => 'jars/cli/import',
+            0 => null,
+            1 => null,
+            2 => 'FEEDBACK_FIFO',
+            3 => 'BASE_VERSION',
+        ],
+
+        'CLI import \S+ -f \S+' => [
+            'AUTHSCHEME' => 'onetime',
+            'LAYOUT' => 'jars/cli/main',
+            'PAGE' => 'jars/cli/import',
+            0 => null,
+            1 => 'BASE_VERSION',
+            2 => null,
+            3 => 'FEEDBACK_FIFO',
         ],
 
         'CLI info -e [_A-Za-z]+' => [

@@ -2,8 +2,6 @@
 
 use OranFry\Jars\CLI\ImportListener;
 
-$jars->masterlog_check();
-
 if (FEEDBACK_FIFO) {
     echo "Opening feedback fifo for WRITE...\n";
 
@@ -14,8 +12,6 @@ if (FEEDBACK_FIFO) {
 
 echo "Importing\n\n";
 
-$unlock_pin = $jars->lock();
-
 while ($f = fgets(STDIN)) {
     [$hash, $date, $time, $json] = explode(' ', $f, 4);
 
@@ -24,7 +20,7 @@ while ($f = fgets(STDIN)) {
 
     echo $timestamp . "\n";
 
-    $data = $jars->import($timestamp, array_values($data), null, false, 0, true);
+    $data = $jars->import($timestamp, array_values($data), BASE_VERSION, false, 0, true, $hash);
 
     echo "\n";
 
@@ -32,7 +28,5 @@ while ($f = fgets(STDIN)) {
         error_response("Import error");
     }
 }
-
-$jars->unlock($unlock_pin);
 
 return [];
