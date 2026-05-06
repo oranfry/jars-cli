@@ -5,14 +5,6 @@ namespace OranFry\Jars\CLI;
 class CliRouter extends \subsimple\Router
 {
     protected static $routes = [
-        'CLI h2n \S+' => [
-            'AUTHSCHEME' => 'onetime',
-            'LAYOUT' => 'jars/cli/main',
-            'PAGE' => 'jars/cli/h2n',
-            0 => null,
-            1 => 'H',
-        ],
-
         'CLI import' => [
             'AUTHSCHEME' => 'onetime',
             'LAYOUT' => 'jars/cli/main',
@@ -97,14 +89,6 @@ class CliRouter extends \subsimple\Router
             'MODE' => 'json',
             'PROPERTY' => null,
             0 => null,
-        ],
-
-        'CLI n2h \S+' => [
-            'AUTHSCHEME' => 'onetime',
-            'LAYOUT' => 'jars/cli/main',
-            'PAGE' => 'jars/cli/n2h',
-            0 => null,
-            1 => 'N',
         ],
 
         'CLI refresh' => [
