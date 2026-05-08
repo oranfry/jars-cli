@@ -6,8 +6,8 @@
     },
     "name": "oranfry/jars-cli",
     "require": {
-        "oranfry/jars-contracts": "dev-chain",
-        "oranfry/jars-core": "dev-chain",
+        "oranfry/jars-contracts": "^10.0.0",
+        "oranfry/jars-core": "*",
         "oranfry/subsimple": "*"
     }
 }
