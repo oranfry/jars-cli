@@ -4,10 +4,10 @@
             "OranFry\\Jars\\CLI\\": "classes"
         }
     },
-    "name": "oranfry\/jars-cli",
+    "name": "oranfry/jars-cli",
     "require": {
-        "oranfry\/jars-contracts": "dev-chain",
-        "oranfry\/jars-core": "dev-chain",
-        "oranfry\/subsimple": "*"
+        "oranfry/jars-contracts": "dev-chain",
+        "oranfry/jars-core": "dev-chain",
+        "oranfry/subsimple": "*"
     }
 }
