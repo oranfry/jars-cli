@@ -1,23 +1,16 @@
 <?php
 
-namespace jars\cli;
+namespace OranFry\Jars\CLI;
 
 class CliRouter extends \subsimple\Router
 {
     protected static $routes = [
-        'CLI h2n \S+' => [
-            'AUTHSCHEME' => 'onetime',
-            'LAYOUT' => 'jars/cli/main',
-            'PAGE' => 'jars/cli/h2n',
-            0 => null,
-            1 => 'H',
-        ],
-
         'CLI import' => [
             'AUTHSCHEME' => 'onetime',
             'LAYOUT' => 'jars/cli/main',
             'PAGE' => 'jars/cli/import',
             'FEEDBACK_FIFO' => null,
+            'BASE_VERSION' => null,
             0 => null,
         ],
 
@@ -25,8 +18,39 @@ class CliRouter extends \subsimple\Router
             'AUTHSCHEME' => 'onetime',
             'LAYOUT' => 'jars/cli/main',
             'PAGE' => 'jars/cli/import',
+            'FEEDBACK_FIFO' => null,
             0 => null,
-            1 => 'FEEDBACK_FIFO',
+            1 => 'BASE_VERSION',
+        ],
+
+        'CLI import -f \S+' => [
+            'AUTHSCHEME' => 'onetime',
+            'LAYOUT' => 'jars/cli/main',
+            'PAGE' => 'jars/cli/import',
+            'BASE_VERSION' => null,
+            0 => null,
+            1 => null,
+            2 => 'FEEDBACK_FIFO',
+        ],
+
+        'CLI import -f \S+ \S+' => [
+            'AUTHSCHEME' => 'onetime',
+            'LAYOUT' => 'jars/cli/main',
+            'PAGE' => 'jars/cli/import',
+            0 => null,
+            1 => null,
+            2 => 'FEEDBACK_FIFO',
+            3 => 'BASE_VERSION',
+        ],
+
+        'CLI import \S+ -f \S+' => [
+            'AUTHSCHEME' => 'onetime',
+            'LAYOUT' => 'jars/cli/main',
+            'PAGE' => 'jars/cli/import',
+            0 => null,
+            1 => 'BASE_VERSION',
+            2 => null,
+            3 => 'FEEDBACK_FIFO',
         ],
 
         'CLI info -e [_A-Za-z]+' => [
@@ -67,18 +91,24 @@ class CliRouter extends \subsimple\Router
             0 => null,
         ],
 
-        'CLI n2h \S+' => [
-            'AUTHSCHEME' => 'onetime',
-            'LAYOUT' => 'jars/cli/main',
-            'PAGE' => 'jars/cli/n2h',
-            0 => null,
-            1 => 'N',
-        ],
-
         'CLI refresh' => [
             'AUTHSCHEME' => 'onetime',
             'LAYOUT' => 'jars/cli/main',
             'PAGE' => 'jars/cli/refresh',
+            0 => null,
+        ],
+
+        'CLI head' => [
+            'AUTHSCHEME' => 'onetime',
+            'LAYOUT' => 'jars/cli/main',
+            'PAGE' => 'jars/cli/head',
+            0 => null,
+        ],
+
+        'CLI rebuild-index' => [
+            'AUTHSCHEME' => 'onetime',
+            'LAYOUT' => 'jars/cli/main',
+            'PAGE' => 'jars/cli/rebuild-index',
             0 => null,
         ],
 

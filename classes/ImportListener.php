@@ -1,6 +1,6 @@
 <?php
 
-namespace jars\cli;
+namespace OranFry\Jars\CLI;
 
 use jars\events\entryimported;
 use jars\events\importline;
