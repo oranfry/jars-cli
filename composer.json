@@ -1,7 +1,7 @@
 {
     "autoload": {
         "psr-4": {
-            "jars\\cli\\": "classes"
+            "OranFry\\Jars\\CLI\\": "classes"
         }
     },
     "name": "oranfry\/jars-cli",

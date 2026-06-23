@@ -1,6 +1,6 @@
 <?php
 
-use jars\contract\JarsConnector;
+use OranFry\Jars\Contract\JarsConnector;
 
 return jars_cli_load();
 

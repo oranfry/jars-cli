@@ -1,10 +1,10 @@
 <?php
 
-namespace jars\cli;
+namespace OranFry\Jars\CLI;
 
-use jars\events\entryimported;
-use jars\events\importline;
-use jars\events\takeanumber;
+use OranFry\Jars\Core\Events\entryimported;
+use OranFry\Jars\Core\Events\importline;
+use OranFry\Jars\Core\Events\takeanumber;
 
 class ImportListener implements entryimported, importline, takeanumber
 {
