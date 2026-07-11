@@ -1,6 +1,7 @@
 <?php
 
 use OranFry\Jars\CLI\ImportListener;
+use OranFry\Jars\Contract\Exception;
 
 $jars->masterlog_check();
 
@@ -14,10 +15,12 @@ if (FEEDBACK_FIFO) {
 
 echo "Importing\n\n";
 
-$unlock_pin = $jars->lock();
+if (!$pin = $jars->lock()) {
+    throw new Exception('Unable to lock jars');
+}
 
 while ($f = fgets(STDIN)) {
-    [$hash, $date, $time, $json] = explode(' ', $f, 4);
+    [$date, $time, $json] = explode(' ', $f, 3);
 
     $timestamp = $date . ' ' . $time;
     $data = json_decode($json);
@@ -29,10 +32,12 @@ while ($f = fgets(STDIN)) {
     echo "\n";
 
     if ($data === false) {
-        error_response("Import error");
+        throw new Exception('Import error');
     }
 }
 
-$jars->unlock($unlock_pin);
+$jars
+    ->lock($pin)  // unlock
+    ->persist();
 
 return [];
