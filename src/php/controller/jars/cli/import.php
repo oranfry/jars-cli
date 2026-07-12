@@ -3,8 +3,6 @@
 use OranFry\Jars\CLI\ImportListener;
 use OranFry\Jars\Contract\Exception;
 
-$jars->masterlog_check();
-
 if (FEEDBACK_FIFO) {
     echo "Opening feedback fifo for WRITE...\n";
 
@@ -15,7 +13,7 @@ if (FEEDBACK_FIFO) {
 
 echo "Importing\n\n";
 
-if (!$pin = $jars->lock()) {
+if (!$pin = $jars->lockPrimary()) {
     throw new Exception('Unable to lock jars');
 }
 
@@ -36,8 +34,6 @@ while ($f = fgets(STDIN)) {
     }
 }
 
-$jars
-    ->lock($pin)  // unlock
-    ->persist();
+$jars->unlockPrimary($pin);
 
 return [];
