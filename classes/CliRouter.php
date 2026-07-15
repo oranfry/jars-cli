@@ -2,7 +2,7 @@
 
 namespace OranFry\Jars\CLI;
 
-class CliRouter extends \subsimple\Router
+class CliRouter extends \OranFry\Subsimple\Router
 {
     protected static $routes = [
         'CLI h2n \S+' => [

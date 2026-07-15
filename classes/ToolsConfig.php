@@ -2,7 +2,7 @@
 
 namespace OranFry\Jars\CLI;
 
-class ToolsConfig extends \Tools\Config
+class ToolsConfig extends \OranFry\Tools\Config
 {
     public function includePath(): ?string
     {
