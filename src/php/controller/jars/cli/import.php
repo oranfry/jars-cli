@@ -28,10 +28,6 @@ if (FEEDBACK_FIFO) {
 
 echo "Importing\n\n";
 
-if (!$pin = $jars->lockPrimary()) {
-    throw new Exception('Unable to lock jars');
-}
-
 while ($f = fgets(STDIN)) {
     [$date, $time, $json] = explode(' ', $f, 3);
 
@@ -43,7 +39,5 @@ while ($f = fgets(STDIN)) {
     echo "\n";
     echo 'Memory usage: ' . numberToSiSuffix(memory_get_usage()) . "\n";
 }
-
-$jars->unlockPrimary($pin);
 
 return [];
